@@ -1,0 +1,13 @@
+<resources>
+    <!-- 这里设置 app 的 colors 文件中配置主题颜色 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--注意，主题色仅影响部分按钮的颜色，如需更改某些按钮的图片，你可以在你的 app 下的资源文件夹中放入与组件中该按钮所使用图片同名的新图片-->
+        <!-- 你的 theme 的主色 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- 你的 theme 的暗主色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 你的 theme 的强调色 -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>

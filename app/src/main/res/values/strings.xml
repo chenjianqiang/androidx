@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">androidx-demo</string>
+
+    <string name="common_app_demo">能力</string>
+    <string name="common_app_demo_aop">Aop举例使用</string>
+    <string name="common_app_demo_aop_desc">使用aspectj使用用例</string>
+</resources>
