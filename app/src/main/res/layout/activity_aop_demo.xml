@@ -15,9 +15,9 @@
 
         <TextView
             android:id="@+id/content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aspectj使用"
+            android:text="aspectj使用,不需要该目标代码(甚至注解都不用，所有方法都可以在AspectJ被描述，只要符合，就可以被拦截)"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{onClickListener}"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/content"
             app:layout_constraintLeft_toLeftOf="parent"
             android:text="View点击,增加aspectj拦截"/>

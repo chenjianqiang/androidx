@@ -1,3 +1,9 @@
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 
 android {
@@ -33,8 +39,76 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.blankj:utilcode:1.28.4'
+    implementation 'org.aspectj:aspectjrt:1.8.13'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+}
+final def log = project.logger
+final def variants = project.android.applicationVariants
+if (variants != null) {
+    variants.all { variant ->
+        JavaCompile javaCompile = variant.javaCompileProvider.get()
+        variant.outputs.all { output ->
+            def variantName = ""
+            output.name.tokenize('-').eachWithIndex { token, index ->
+                variantName = variantName + (index == 0 ? token : token.capitalize())
+            }
+            javaCompile.doLast {
+                MessageHandler handler = new MessageHandler(true)
+                String[] javaArgs = ["-showWeaveInfo",
+                                     "-1.8",
+                                     "-inpath", javaCompile.destinationDir.toString(),
+                                     "-aspectpath", javaCompile.classpath.asPath,
+                                     "-d", javaCompile.destinationDir.toString(),
+                                     "-classpath", javaCompile.classpath.asPath,
+                                     "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+                new Main().run(javaArgs, handler)
+                File kotlinCompileDstDir = new File(project.buildDir.path + "/tmp/kotlin-classes/" + variantName)
+                String kotlinCompileDstPath = kotlinCompileDstDir.getAbsolutePath()
+                if (kotlinCompileDstDir.isDirectory() && kotlinCompileDstDir.list().length > 0) {
+                    String[] kotlinArgs = ["-showWeaveInfo",
+                                           "-1.8",
+                                           "-inpath", kotlinCompileDstPath,
+                                           "-aspectpath", javaCompile.classpath.asPath,
+                                           "-d", kotlinCompileDstPath,
+                                           "-classpath", javaCompile.classpath.asPath,
+                                           "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+                    new Main().run(kotlinArgs, handler)
+                }
+                File outFile = new File(project.rootProject.rootDir, "ajcwarn.log")
+                BufferedWriter os = new BufferedWriter(new FileWriter(outFile, true))
+                boolean writeTime = true
+                for (IMessage message : handler.getMessages(null, true)) {
+                    switch (message.getKind()) {
+                        case IMessage.ABORT:
+                        case IMessage.ERROR:
+                        case IMessage.FAIL:
+                            println "aspectj error: " + message.message + "\n" + message.thrown
+                            throw new RuntimeException(message.message, message.thrown)
+                        case IMessage.WARNING:
+                            String warnMsg = "aspectj warn: " + message.message
+                            System.err.println(warnMsg)
+                            if (writeTime) {
+                                SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                                String time = sf.format(new Date())
+                                os.newLine()
+                                os.writeLine("build   time: " + time)
+                                writeTime = false
+                            }
+                            os.writeLine(warnMsg)
+                            os.flush()
+                            break
+                        case IMessage.INFO:
+//                                println "aspectj info: " + message.message
+                            break
+                        case IMessage.DEBUG:
+//                                println "aspectj debug: " + message.message
+                            break
+                    }
+                }
+            }
+        }
+    }
 }
