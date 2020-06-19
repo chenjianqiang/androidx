@@ -17,6 +17,7 @@ public class PictureWorker extends Worker {
 
     public PictureWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+
         this.mWorkerParams = workerParams;
     }
 
