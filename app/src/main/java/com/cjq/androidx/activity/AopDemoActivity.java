@@ -10,10 +10,11 @@ import androidx.databinding.DataBindingUtil;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.cjq.androidx.R;
+import com.cjq.androidx.activity.view.BigBaseActivity;
 import com.cjq.androidx.databinding.ActivityAopDemoBinding;
 
 
-public class AopDemoActivity extends AppCompatActivity implements View.OnClickListener {
+public class AopDemoActivity extends BigBaseActivity implements View.OnClickListener {
     private ActivityAopDemoBinding mView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
