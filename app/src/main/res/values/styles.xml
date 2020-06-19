@@ -10,4 +10,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="text_whole_note">
+        <item name="android:textColor">@color/text_1a1a1a</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

@@ -39,6 +39,6 @@ public class DemoAspectJ {
 
     @After("printLifecycleForActivity()")
     public void toastAop(JoinPoint joinPoint){
-        ToastUtils.showShort(joinPoint.toShortString() + " toastAop拦截");
+       // ToastUtils.showShort(joinPoint.toShortString() + " toastAop拦截");
     }
 }
