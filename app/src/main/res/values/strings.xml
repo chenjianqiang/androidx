@@ -3,5 +3,8 @@
 
     <string name="common_app_demo">能力</string>
     <string name="common_app_demo_aop">Aop举例使用</string>
-    <string name="common_app_demo_aop_desc">使用aspectj使用用例</string>
+    <string name="common_app_demo_aop_desc">aspectj使用,不需要改目标代码(甚至注解都不用，所有方法都可以在AspectJ被描述，只要符合，就可以被拦截)</string>
+
+    <string name="common_app_demo_worker">Worker举例使用</string>
+    <string name="common_app_demo_worker_desc">使用WorkerManager调度Worker任务执行，即时进程被杀死，任务执行不会受到影响，且可以给Worker任务传参，以及获取Worker返回结果</string>
 </resources>

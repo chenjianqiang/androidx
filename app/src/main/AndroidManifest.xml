@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AopDemoActivity"  />
+        <activity android:name=".activity.WorkerManagerDemoActivity"  />
     </application>
 
 </manifest>

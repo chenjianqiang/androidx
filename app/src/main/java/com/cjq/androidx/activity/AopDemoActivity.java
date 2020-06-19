@@ -2,15 +2,11 @@ package com.cjq.androidx.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.cjq.androidx.R;
-import com.cjq.androidx.activity.view.BigBaseActivity;
 import com.cjq.androidx.databinding.ActivityAopDemoBinding;
 
 
