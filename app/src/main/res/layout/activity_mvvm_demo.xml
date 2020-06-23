@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/text_whole_note"
+            android:layout_margin="20dp"
+            android:text="aspectj使用,不需要该目标代码(甚至注解都不用，所有方法都可以在AspectJ被描述，只要符合，就可以被拦截)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_as"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            style="@style/text_whole_note"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="View点击,增加aspectj拦截"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

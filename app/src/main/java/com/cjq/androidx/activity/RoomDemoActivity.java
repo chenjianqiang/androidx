@@ -68,7 +68,6 @@ public class RoomDemoActivity extends BigBaseActivity {
         }
     }
 
-    //==================权限请求接口=================
     @Override
     public String[] getPermissions() {
         //设置该界面所需的全部权限

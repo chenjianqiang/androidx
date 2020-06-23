@@ -29,6 +29,7 @@
         <activity android:name=".activity.AopDemoActivity"  />
         <activity android:name=".activity.WorkerManagerDemoActivity"  />
         <activity android:name=".activity.RoomDemoActivity"  />
+        <activity android:name=".activity.MVVMDemoActivity"  />
     </application>
 
 </manifest>

@@ -19,6 +19,8 @@ import com.cjq.androidx.tools.PermissionRequestUtil;
  * 设计一个超级父类
  * 囊括所有界面的通用功能，方便日后统一管理
  * 1.权限
+ * 2.沉浸式
+ * 3.埋点
  */
 public abstract class BigBaseActivity extends AppCompatActivity implements View.OnClickListener, PermissionRequestInterface {
     private final static String TAG = "BigBaseActivity";
@@ -52,14 +54,21 @@ public abstract class BigBaseActivity extends AppCompatActivity implements View.
     }
 
     @Override
+    public String[] getPermissions() {
+        //设置所需的全部权限,默认不需要null，如果需要就在子类实现该方法
+        return null;
+    }
+
+    @Override
     public void requestPermissionsSuccess() {
-        //权限请求用户已经全部允许
+        //权限请求用户已经全部允许回调，如果需要执行特殊逻辑，在子类实现该方法
         ToastUtils.showShort("权限请求用户已经全部允许");
     }
 
     @Override
     public void requestPermissionsFail() {
-        //权限请求不被用户允许。可以提示并退出或者提示权限的用途并重新发起权限申请。
+        //权限请求(至少有一个)不被用户允许回调。可以提示并退出或者提示权限的用途并重新发起权限申请。
+        // 如果需要执行特殊逻辑，在子类实现该方法
         ToastUtils.showShort("权限有缺失");
     }
 
