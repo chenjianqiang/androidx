@@ -16,8 +16,8 @@ public class MainActivity extends ListActivity {
     private final DemoDetails[] demos = {
             new DemoDetails(R.string.common_app_demo, 0, null),
             new DemoDetails(R.string.common_app_demo_aop, R.string.common_app_demo_aop_desc, AopDemoActivity.class),
-            new DemoDetails(R.string.common_app_demo_worker, R.string.common_app_demo_worker_desc, WorkerManagerDemoActivity.class)
-
+            new DemoDetails(R.string.common_app_demo_worker, R.string.common_app_demo_worker_desc, WorkerManagerDemoActivity.class),
+            new DemoDetails(R.string.common_app_demo_room, R.string.common_app_demo_room_desc, RoomDemoActivity.class)
     };
 
     @Override

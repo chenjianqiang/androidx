@@ -3,6 +3,7 @@
     package="com.cjq.androidx" >
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +18,7 @@
         </activity>
         <activity android:name=".activity.AopDemoActivity"  />
         <activity android:name=".activity.WorkerManagerDemoActivity"  />
+        <activity android:name=".activity.RoomDemoActivity"  />
     </application>
 
 </manifest>

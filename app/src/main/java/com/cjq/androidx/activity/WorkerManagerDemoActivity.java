@@ -23,7 +23,7 @@ import com.cjq.androidx.worker.PictureWorker;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class WorkerManagerDemoActivity extends BigBaseActivity implements View.OnClickListener {
+public class WorkerManagerDemoActivity extends BigBaseActivity {
     private ActivityWorkerDemoBinding mBindingView;
 
     @Override
@@ -83,6 +83,7 @@ public class WorkerManagerDemoActivity extends BigBaseActivity implements View.O
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_as:
                 startWorker();
