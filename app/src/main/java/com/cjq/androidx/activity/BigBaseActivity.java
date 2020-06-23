@@ -5,25 +5,62 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.cjq.androidx.interfaces.PermissionRequestInterface;
+import com.cjq.androidx.tools.PermissionRequestHelper;
+import com.cjq.androidx.tools.PermissionRequestUtil;
 
 /**
  * 设计一个超级父类
  * 囊括所有界面的通用功能，方便日后统一管理
  * 1.权限
  */
-public abstract class BigBaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BigBaseActivity extends AppCompatActivity implements View.OnClickListener, PermissionRequestInterface {
     private final static String TAG = "BigBaseActivity";
+    private PermissionRequestHelper mPermissionRequestHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(this.getClass().getSimpleName());
         Log.d(TAG,"onCreate");
+        initPermissionRequest();
+    }
+
+    private void initPermissionRequest(){
+        //初始化并发起权限申请
+        mPermissionRequestHelper = new PermissionRequestHelper(this, this);
+        mPermissionRequestHelper.requestPermissions();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(mPermissionRequestHelper.requestPermissionsResult(requestCode,permissions,grantResults)){
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public int getPermissionsRequestCode() {
+        return PermissionRequestUtil.PERMISSION_REQUEST_CODE;
+    }
+
+    @Override
+    public void requestPermissionsSuccess() {
+        //权限请求用户已经全部允许
+        ToastUtils.showShort("权限请求用户已经全部允许");
+    }
+
+    @Override
+    public void requestPermissionsFail() {
+        //权限请求不被用户允许。可以提示并退出或者提示权限的用途并重新发起权限申请。
+        ToastUtils.showShort("权限有缺失");
     }
 
     @Override

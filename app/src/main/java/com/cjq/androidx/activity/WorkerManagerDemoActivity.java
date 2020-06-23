@@ -1,5 +1,6 @@
 package com.cjq.androidx.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -90,4 +91,16 @@ public class WorkerManagerDemoActivity extends BigBaseActivity {
                 break;
         }
     }
+
+    @Override
+    public String[] getPermissions() {
+        //设置该界面所需的全部权限
+        /*return new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE
+        };*/
+        //如果不需要申请权限，该方法返回null即可
+        return null;
+    }
+
 }

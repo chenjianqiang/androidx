@@ -1,5 +1,6 @@
 package com.cjq.androidx.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,14 @@ public class AopDemoActivity extends BigBaseActivity {
                 Log.e("AopDemoActivity","你点击的是某个按钮");
                 break;
         }
-
     }
+
+    @Override
+    public String[] getPermissions() {
+        //设置该界面所需的全部权限
+        return new String[]{
+                Manifest.permission.CAMERA
+        };
+    }
+
 }

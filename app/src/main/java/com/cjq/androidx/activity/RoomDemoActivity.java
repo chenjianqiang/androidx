@@ -1,9 +1,11 @@
 package com.cjq.androidx.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
@@ -41,14 +43,14 @@ public class RoomDemoActivity extends BigBaseActivity {
             employeeList.add(employee);
         }
         employeeDao.insertEmployee(employeeList.toArray(new Employee[employeeList.size()]));
-        Log.e("RoomDemoActivity","cost:"+(System.currentTimeMillis()-start));
+        Log.e("RoomDemoActivity", "cost:" + (System.currentTimeMillis() - start));
     }
 
-    private void loadEmployee(){
+    private void loadEmployee() {
         List<NameTuple> employees = employeeDao.loadFullName();
-        if(employees != null && employees.size() > 0) {
+        if (employees != null && employees.size() > 0) {
             mView.setNameTuple(employees.get(employees.size() - 1));
-        }else{
+        } else {
             ToastUtils.showShort("当前数据表是空的");
         }
     }
@@ -64,5 +66,15 @@ public class RoomDemoActivity extends BigBaseActivity {
                 loadEmployee();
                 break;
         }
+    }
+
+    //==================权限请求接口=================
+    @Override
+    public String[] getPermissions() {
+        //设置该界面所需的全部权限
+        return new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE
+        };
     }
 }
