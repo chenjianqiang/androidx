@@ -20,17 +20,6 @@ public class MVVMDemoActivity extends BigBaseActivity {
         super.onCreate(savedInstanceState);
         mView = DataBindingUtil.setContentView(this, R.layout.activity_mvvm_demo);
         mView.setOnClickListener(this);
+        mView.dailyPictureView.init(this);
     }
-
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        switch (v.getId()){
-            case R.id.tv_as:
-                //ToastUtils.showShort("你点击的是某个按钮");
-                Log.e("AopDemoActivity","你点击的是某个按钮");
-                break;
-        }
-    }
-
 }

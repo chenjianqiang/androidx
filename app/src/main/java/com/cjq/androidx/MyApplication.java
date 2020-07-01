@@ -5,10 +5,12 @@ import android.app.Application;
 import androidx.room.Room;
 
 import com.cjq.androidx.database.MyDataBase;
+import com.cjq.androidx.tools.AppExecutors;
 import com.facebook.stetho.Stetho;
 
 public class MyApplication extends Application {
     private static MyDataBase myDataBase;
+    public static final AppExecutors EXECUTORS = new AppExecutors();
 
     @Override
     public void onCreate() {
