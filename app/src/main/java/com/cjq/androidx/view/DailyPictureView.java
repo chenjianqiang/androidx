@@ -58,6 +58,6 @@ public class DailyPictureView extends BigBaseView implements OnItemClickListener
 
     @Override
     public void onItemClick(ImagesBean imagesBean) {
-        ToastUtils.showShort(imagesBean.getTitle());
+        ToastUtils.showShort(imagesBean.getCopyright());
     }
 }

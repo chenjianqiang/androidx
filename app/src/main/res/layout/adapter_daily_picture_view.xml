@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
 
+        <import type="com.cjq.androidx.web.ApiCenter"/>
         <variable
             name="Image"
             type="com.cjq.androidx.bean.ImagesBean">
@@ -30,9 +31,10 @@
         <ImageView
             android:id="@+id/ivImg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:scaleType="fitCenter"
+            app:img="@{ApiCenter.API_HOST.substring(0,ApiCenter.API_HOST.length()-1)+Image.url}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -42,7 +44,6 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivImg"
             android:layout_margin="10dp"
             android:text="@{Image.copyright}"
             android:textColor="@android:color/black"
