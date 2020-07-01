@@ -12,7 +12,10 @@
     <string name="common_app_demo_room_desc">使用room，需要定义room的3个组件:Database,Entity,Dao</string>
 
     <string name="common_app_mvvm_room">MVVM应用demo</string>
-    <string name="common_app_demo_mvvm_desc">使用LiveData + ViewModel + okhttp3实现一个网络请求和界面刷新</string>
+    <string name="common_app_demo_mvvm_desc">使用LiveData + ViewModel + Repository + okhttp3实现一个网络请求和界面刷新</string>
+
+    <string name="common_app_databinding">Databinding之数据动态刷新应用demo</string>
+    <string name="common_app_databinding_desc">使用notifyPropertyChanged界面刷新</string>
 
     <string name="common_app_demo_room_note">使用room，需要定义room的3个组件:Database,Entity,Dao。\n其中Database: 包含数据库持有者，并作为与 App 持久关联数据的底层连接的主要访问点。App通过 Room 的 Database 获取与数据库相关的数据库访问对象（DAO）
     \nEntity: 表示数据库内的表（Table），APP 使用Entity获取和设置数据库中表的数据。。\nDao: 包含用于访问数据库的方法。App 使用 DAO 从数据库中获取 Entity，并且将 Entity 的变化保存到数据库中。</string>
