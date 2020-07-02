@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.cjq.androidx.R;
 import com.cjq.androidx.bean.UserInfo;
 import com.cjq.androidx.databinding.ActivityDatabindingDemoBinding;
+import com.cjq.androidx.tools.filter.TextInputTextWatcher;
 
 /**
  * 如何进行单向绑定？
@@ -32,6 +33,8 @@ public class DataBindingDemoActivity extends BigBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding_demo);
+
+        binding.nameEt.addTextChangedListener(new TextInputTextWatcher());
 
         mTime = new Time();
         user = new UserInfo("--","");
