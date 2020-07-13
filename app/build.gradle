@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.cjq.androidx"
-        minSdkVersion 26
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -43,6 +43,12 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 }
 

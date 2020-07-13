@@ -7,6 +7,8 @@ import androidx.room.Room;
 import com.cjq.androidx.database.MyDataBase;
 import com.cjq.androidx.tools.AppExecutors;
 import com.facebook.stetho.Stetho;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 
 public class MyApplication extends Application {
     private static MyDataBase myDataBase;
@@ -16,6 +18,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app_init();
+        SpeechUtility.createUtility(this, SpeechConstant.APPID+"=5f0c0044");
     }
 
     private void app_init() {

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/tts_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="需要转换的文字36.8 ℃"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/tts_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/text_whole_note"
+            android:padding="20dp"
+            android:onClick="@{onClickListener}"
+            android:text="文字转语音播放"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tts_msg"/>
+
+        <TextView
+            android:id="@+id/tts_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
+            style="@style/text_whole_note"
+            android:padding="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tts_start"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="文字转语音停止"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

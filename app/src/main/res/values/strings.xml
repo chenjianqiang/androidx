@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">androidx-demo</string>
 
-    <string name="common_app_demo">能力</string>
+    <string name="common_app_demo">Android TTS测试</string>
+    <string name="common_app_demo_desc">Android TTS测试语音播报</string>
+
+    <string name="common_app_xunfei_demo">讯飞测试</string>
+    <string name="common_app_xunfei_demo_desc">讯飞测试语音播报</string>
+
     <string name="common_app_demo_aop">Aop应用demo</string>
     <string name="common_app_demo_aop_desc">aspectj使用,不需要改目标代码(甚至注解都不用，所有方法都可以在AspectJ被描述，只要符合，就可以被拦截)</string>
 
