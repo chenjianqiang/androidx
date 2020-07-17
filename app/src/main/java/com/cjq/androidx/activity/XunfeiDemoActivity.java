@@ -83,6 +83,16 @@ public class XunfeiDemoActivity extends BigBaseActivity {
                 ToastUtils.showShort("停止讯飞播报");
                 speechSynthesizer.stopSpeaking();
                 break;
+            case R.id.tts_pause:
+                ToastUtils.showShort("暂停飞播报");
+                if(speechSynthesizer.isSpeaking()) {
+                    mView.ttsPause.setText("继续播报");
+                    speechSynthesizer.pauseSpeaking();
+                }else{
+                    mView.ttsPause.setText("暂停播报");
+                    speechSynthesizer.resumeSpeaking();
+                }
+                break;
         }
     }
 
@@ -137,6 +147,9 @@ public class XunfeiDemoActivity extends BigBaseActivity {
         speechSynthesizer.setParameter(SpeechConstant.PITCH, "50");
         //设置合成音量
         speechSynthesizer.setParameter(SpeechConstant.VOLUME, "50");
+
+        //如果不需要保存合成音频，注释该行代码
+        speechSynthesizer.setParameter(SpeechConstant.TTS_AUDIO_PATH, "./sdcard/iflytek.pcm");
     }
 
     @Override
@@ -150,7 +163,7 @@ public class XunfeiDemoActivity extends BigBaseActivity {
     public String[] getPermissions() {
         //设置该界面所需的全部权限
         return new String[]{
-                Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_PHONE_STATE
+                Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_PHONE_STATE,
         };
     }
 }

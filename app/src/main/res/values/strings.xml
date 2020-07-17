@@ -3,6 +3,7 @@
 
     <string name="common_app_demo">Android TTS测试</string>
     <string name="common_app_demo_desc">Android TTS测试语音播报</string>
+    <string name="common_app_tts_content">早上好，小智为您播报，今天是5月5日，农历四月十三，立夏。您的最新一期遥感图像于5月1日生产完毕，请点击遥感功能查看。下期遥感预计5月4日生成，请留意。基于智农大数据分析，冬小麦冬前日平均气温降至3-5℃，土壤田间持水量低于60%时需浇越冬水；冬前进行化学除草。未来数天气象条件适宜稻瘟病、稻曲病、二化螟等病虫害发生。农业气象灾害方面，需防范高温热害、干旱等气象灾害。未来十五天内，有连续4天降雨、2天高温，请合理安排农事，以上具体信息请查看预警中心。今天白天到夜间小雨转晴，温度22-28℃。本地气象部门今日发布了暴雨橙色预警，需注意防范。近2小时内有雨。今天天气条件适宜进行植保、灌溉。小智的今日播报到此结束，我们明天再会。</string>
 
     <string name="common_app_xunfei_demo">讯飞测试</string>
     <string name="common_app_xunfei_demo_desc">讯飞测试语音播报</string>
