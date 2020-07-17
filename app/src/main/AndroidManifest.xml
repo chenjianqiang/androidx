@@ -34,6 +34,7 @@
         <activity android:name=".activity.DataBindingDemoActivity"  />
         <activity android:name=".activity.TTSDemoActivity"  />
         <activity android:name=".activity.XunfeiDemoActivity"  />
+        <activity android:name=".activity.SpannerStringDemoActivity"  />
     </application>
 
 </manifest>
