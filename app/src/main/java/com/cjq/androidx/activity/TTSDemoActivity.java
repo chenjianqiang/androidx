@@ -2,88 +2,119 @@ package com.cjq.androidx.activity;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cjq.androidx.R;
 import com.cjq.androidx.databinding.ActivityTtsDemoBinding;
-import com.iflytek.cloud.SpeechConstant;
-import com.iflytek.cloud.SpeechUtility;
+import com.cjq.androidx.tools.MyMediaManager;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.Locale;
 
-public class TTSDemoActivity extends BigBaseActivity {
+
+/**
+ * 使用系统自带TTS功能，支持暂停(先合成，生成本地音频文件 )
+ */
+public class TTSDemoActivity extends BigBaseActivity implements TextToSpeech.OnInitListener{
+    private String TAG = "TTSDemoActivity";
     private ActivityTtsDemoBinding mView;
-   // private String ttsMsg = "新一轮强降雨天气过程再次拉开帷幕，预计从今天开始一直到16日，西南地区东部、江汉、江淮、江南北部等地将再次遭遇强降雨过程侵袭，部分地区有大到暴雨，局地大暴雨，最强降雨时段为14-15日。气温方面，副高的“威力”依然不减，江南、华南的不少地区近几天炎热又将升级，高温范围也进一步扩大。";
+    private TextToSpeech mTts;
+    private String wavPath = Environment.getExternalStorageDirectory() + "/tts_temp.wav";
+    private HashMap<String, String> myHashRender = new HashMap();
+    private MyMediaManager myMediaManager;
+    private boolean isPause;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mView = DataBindingUtil.setContentView(this,R.layout.activity_tts_demo);
-        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5f0c0044");
-        play();
+        mTts = new TextToSpeech(this,this::onInit);
+        myMediaManager = new MyMediaManager(this);
         mView.setOnClickListener(this);
+    }
+
+    private void preLoadAudio() {
+        isPause = false;
+        File file = new File(wavPath);
+        if(file.exists()){
+            file.delete();
+        }
+        String ttsMsg = mView.ttsMsg.getText().toString();
+        if(StringUtils.isTrimEmpty(ttsMsg)){
+            return;
+        }
+        Log.e(TAG, "synthesizeToFile begin");
+        myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, ttsMsg);
+        int r = mTts.synthesizeToFile(ttsMsg, myHashRender, wavPath);
+        if (r == TextToSpeech.SUCCESS) {
+            Log.e(TAG, "save audio_file success" + wavPath);
+        } else {
+            Log.e(TAG, "save audio_file fail");
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tts_start:
-                ToastUtils.showShort("开始");
-                String ttsMsg = mView.ttsMsg.getText().toString();
-                if(StringUtils.isTrimEmpty(ttsMsg)){
-                    return;
-                }
-                tts.speak(ttsMsg,TextToSpeech.QUEUE_ADD,null);
+                ToastUtils.showShort("开始播报");
+                //tts.speak(ttsMsg,TextToSpeech.QUEUE_ADD,null);
+                myMediaManager.playSound(wavPath,mp -> {
+                    ToastUtils.showShort("播放完成");
+                });
                 break;
             case R.id.tts_stop:
                 ToastUtils.showShort("停止TTS");
-                stopTTS();
+                //stopTTS();
+                myMediaManager.stop();
+                break;
+            case R.id.tts_pause:
+                if(!isPause) {
+                    isPause = true;
+                    mView.ttsPause.setText("继续播报");
+                    myMediaManager.pause();
+                }else{
+                    isPause = false;
+                    mView.ttsPause.setText("暂停播报");
+                    myMediaManager.resume();
+                }
                 break;
         }
     }
 
-    private TextToSpeech tts;
-    private void play() {
-        tts = new TextToSpeech(this,new listener());
-    }
-    private class listener implements TextToSpeech.OnInitListener {
-        @Override
-        public void onInit(int status) {
-            if (status == TextToSpeech.SUCCESS) {
-                //设置播放语言
-                int result = tts.setLanguage(Locale.CHINESE);
-                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    ToastUtils.showShort("不支持TTS");
-                } else if (result == TextToSpeech.LANG_AVAILABLE) {
-                    //初始化成功之后才可以播放文字
-                    //否则会提示“speak failed: not bound to tts engine
-                    //TextToSpeech.QUEUE_ADD会将加入队列的待播报文字按顺序播放
-                    //TextToSpeech.QUEUE_FLUSH会替换原有文字
-                    ToastUtils.showShort("支持TTS");
-                }
-
-            } else {
-                Log.e("TAG", "初始化失败");
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            //设置播放语言
+            int result = mTts.setLanguage(Locale.CHINESE);
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                ToastUtils.showShort("不支持TTS");
+            } else if (result == TextToSpeech.LANG_AVAILABLE) {
+                //初始化成功之后才可以播放文字
+                //否则会提示“speak failed: not bound to tts engine
+                //TextToSpeech.QUEUE_ADD会将加入队列的待播报文字按顺序播放
+                //TextToSpeech.QUEUE_FLUSH会替换原有文字
+                ToastUtils.showShort("支持TTS");
+                preLoadAudio();
             }
 
+        } else {
+            Log.e(TAG, "初始化失败");
         }
-
     }
 
     public void stopTTS() {
-        if (tts != null) {
-            tts.shutdown();
-            tts.stop();
-            tts = null;
+        if (mTts != null) {mTts.shutdown();
+
+            mTts.stop();
+            mTts = null;
         }
     }
 
@@ -97,7 +128,7 @@ public class TTSDemoActivity extends BigBaseActivity {
     public String[] getPermissions() {
         //设置该界面所需的全部权限
         return new String[]{
-                Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_PHONE_STATE
+                Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_PHONE_STATE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE
         };
     }
 }

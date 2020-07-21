@@ -26,6 +26,8 @@ public class XunfeiDemoActivity extends BigBaseActivity {
     // 默认发音人
     private String voicer = "xiaoyan";
     private String TAG = "XunfeiDemoActivity";
+    private boolean isPause;
+    private boolean isComplete;
 
     // 引擎类型
     private String mEngineType = SpeechConstant.TYPE_CLOUD;
@@ -84,8 +86,7 @@ public class XunfeiDemoActivity extends BigBaseActivity {
                 speechSynthesizer.stopSpeaking();
                 break;
             case R.id.tts_pause:
-                ToastUtils.showShort("暂停飞播报");
-                if(speechSynthesizer.isSpeaking()) {
+                if(!isPause) {
                     mView.ttsPause.setText("继续播报");
                     speechSynthesizer.pauseSpeaking();
                 }else{
@@ -100,31 +101,33 @@ public class XunfeiDemoActivity extends BigBaseActivity {
         speechSynthesizer.startSpeaking(text, new SynthesizerListener() {
             @Override
             public void onSpeakBegin() {
+                isComplete = false;
                 Log.e(TAG,"onSpeakBegin");
             }
 
             @Override
             public void onBufferProgress(int i, int i1, int i2, String s) {
-
+                Log.e(TAG,"onBufferProgress");
             }
 
             @Override
             public void onSpeakPaused() {
-
+                Log.e(TAG,"onSpeakPaused");
+                isPause = true;
             }
 
             @Override
             public void onSpeakResumed() {
-
+                isPause = false;
             }
 
             @Override
             public void onSpeakProgress(int i, int i1, int i2) {
-
             }
 
             @Override
             public void onCompleted(SpeechError speechError) {
+                isComplete = true;
             }
 
             @Override
