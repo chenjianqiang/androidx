@@ -9,7 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cjq.androidx.R;
 import com.cjq.androidx.adapter.DailyPictureViewAdapter;
@@ -43,8 +47,8 @@ public class DailyPictureView extends BigBaseView implements OnItemClickListener
             LayoutInflater inflater = LayoutInflater.from(getContext());
             mView = DataBindingUtil.inflate(inflater, R.layout.view_daily_picture, this, true);
             dailyPictureViewAdapter = new DailyPictureViewAdapter(getContext(), new DailyPicture(), this);
+            initRecycleViewSpan();
             mView.dailyRecyclerView.setAdapter(dailyPictureViewAdapter);
-
             dailyPictureViewModel.dailyPictureLiveData.observe(activity, this::onLoadDailyPicture);
             dailyPictureViewModel.loadDailyPicture();
         }
@@ -54,6 +58,18 @@ public class DailyPictureView extends BigBaseView implements OnItemClickListener
         if (resource != null) {
             dailyPictureViewAdapter.setDailyPicture(resource);
         }
+    }
+
+    private void initRecycleViewSpan(){
+        Context context;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(ActivityUtils.getActivityByContext(getContext()),2);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 0?2:1;
+            }
+        });
+        mView.dailyRecyclerView.setLayoutManager(gridLayoutManager);
     }
 
     @Override
