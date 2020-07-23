@@ -44,6 +44,13 @@ public class DailyPictureViewAdapter extends RecyclerView.Adapter<DailyPictureVi
 
     @Override
     public void onBindViewHolder(@NonNull DailyPictureViewHolder holder, int position) {
+        if(position == 0){
+            StaggeredGridLayoutManager.LayoutParams layoutParams = new StaggeredGridLayoutManager.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setFullSpan(true);
+            holder.binding.getRoot().setLayoutParams(layoutParams);
+        }
         ImagesBean imagesBean = dailyPicture.getImages().get(position);
         holder.binding.setImage(imagesBean);
     }

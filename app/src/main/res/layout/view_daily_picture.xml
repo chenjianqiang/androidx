@@ -19,7 +19,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

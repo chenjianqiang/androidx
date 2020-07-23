@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.blankj.utilcode.util.ActivityUtils;
@@ -22,7 +21,6 @@ import com.cjq.androidx.bean.ImagesBean;
 import com.cjq.androidx.databinding.ViewDailyPictureBinding;
 import com.cjq.androidx.interfaces.OnItemClickListener;
 import com.cjq.androidx.viewmodel.DailyPictureViewModel;
-import com.cjq.androidx.web.Resource;
 
 public class DailyPictureView extends BigBaseView implements OnItemClickListener<ImagesBean> {
     private ViewDailyPictureBinding mView;
@@ -47,7 +45,6 @@ public class DailyPictureView extends BigBaseView implements OnItemClickListener
             LayoutInflater inflater = LayoutInflater.from(getContext());
             mView = DataBindingUtil.inflate(inflater, R.layout.view_daily_picture, this, true);
             dailyPictureViewAdapter = new DailyPictureViewAdapter(getContext(), new DailyPicture(), this);
-            initRecycleViewSpan();
             mView.dailyRecyclerView.setAdapter(dailyPictureViewAdapter);
             dailyPictureViewModel.dailyPictureLiveData.observe(activity, this::onLoadDailyPicture);
             dailyPictureViewModel.loadDailyPicture();
@@ -60,8 +57,30 @@ public class DailyPictureView extends BigBaseView implements OnItemClickListener
         }
     }
 
+    /**
+     * 设置瀑布流布局中的某个item，独占一行、占一列、占两列、等等
+     * @param mStaggeredGridLayoutManager
+     * @param position 目标item所在的位置
+     * @param TARGET_ITEM_TYPE 目标item的条目类型
+     * @param parentView 该item的整个布局
+     */
+    /*private void setStaggeredItemSpanCount(StaggeredGridLayoutManager mStaggeredGridLayoutManager,int position,int TARGET_ITEM_TYPE,View parentView){
+        int type = getItemViewType(position);
+        if(type == TARGET_ITEM_TYPE){
+            StaggeredGridLayoutManager.LayoutParams layoutParams =
+                    new StaggeredGridLayoutManager.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setFullSpan(true);
+            parentView.setLayoutParams(layoutParams);
+        }
+    }*/
+
+    /**
+     * 设置网格布局，2列纵向显示(宽度均分，高度均分)
+     * 特殊处：第一个元素占两列，其他元素占一列
+     */
     private void initRecycleViewSpan(){
-        Context context;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(ActivityUtils.getActivityByContext(getContext()),2);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
