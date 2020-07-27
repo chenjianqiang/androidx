@@ -16,7 +16,7 @@ public class DailyPictureViewModel extends ViewModel {
 
     public DailyPictureViewModel(){
         dailyPictureRepository = new DailyPictureRepository();
-        dailyPictureLiveData = Transformations.switchMap(triggerDailyPicture,input->dailyPictureRepository.getDailyPicture("js",0,5));
+        dailyPictureLiveData = Transformations.switchMap(triggerDailyPicture,input->dailyPictureRepository.getDailyPicture("js",0,8));
     }
 
     public void loadDailyPicture(){
