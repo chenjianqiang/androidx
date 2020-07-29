@@ -26,6 +26,9 @@
     <string name="common_app_spanner_string_demo">SpannerString应用demo</string>
     <string name="common_app_spanner_string_demo_desc">支持单个TextView实现部分内容不同点击，不同显示样式，不同图标等</string>
 
+    <string name="common_app_image_test_demo">图片显示demo</string>
+    <string name="common_app_image_test_demo_desc">根据实际图片大小设置显示控件大小</string>
+
     <string name="common_app_demo_room_note">使用room，需要定义room的3个组件:Database,Entity,Dao。\n其中Database: 包含数据库持有者，并作为与 App 持久关联数据的底层连接的主要访问点。App通过 Room 的 Database 获取与数据库相关的数据库访问对象（DAO）
     \nEntity: 表示数据库内的表（Table），APP 使用Entity获取和设置数据库中表的数据。。\nDao: 包含用于访问数据库的方法。App 使用 DAO 从数据库中获取 Entity，并且将 Entity 的变化保存到数据库中。</string>
     <string name="http_net_error_hint" translatable="false">网络信号差，请稍后重试</string>
