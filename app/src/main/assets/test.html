@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+</head>
+<input>
+<div>This is a test</div>
+
+<img id="image" width="200" height="200"
+     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595911540558&di=eca6bd25e4f398f71fcdcbc1df7e8428&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F36%2F48%2F19300001357258133412489354717.jpg"
+     onclick="imageClick(this)"/>
+<br/>
+<input type="file" onchange="selectImage(this);"/>
+
+<br/>
+<br/>
+<button onclick="onBtnClick1()">跳转新页面</button>
+
+<br/>
+<br/>
+
+<button onclick="onBack()">返回</button>
+
+<br/>
+<br/>
+
+<button onclick="imagesClicks()">跳媒体浏览。。。</button>
+
+<br/>
+
+<script>
+    var image = '';
+    function selectImage(file) {
+        if (!file.files || !file.files[0]) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+            document.getElementById('image').src = evt.target.result;
+            image = evt.target.result;
+        }
+        reader.readAsDataURL(file.files[0]);
+    }
+
+    function imageClick(image) {
+        console.log(image.src)
+        window.android.onImageClick(image.src)
+    }
+
+    function onBtnClick1(e) {
+        console.log(e)
+        window.android.onCall("13234563432", "曾大新")
+    }
+
+    function onBack(e) {
+        window.android.goBack();
+    }
+
+    function imagesClicks(e) {
+    }
+
+
+
+
+</script>
+</body>
+</html>

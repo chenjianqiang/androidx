@@ -36,6 +36,8 @@
         <activity android:name=".activity.XunfeiDemoActivity"  />
         <activity android:name=".activity.SpannerStringDemoActivity"  />
         <activity android:name=".activity.ImageTestActivity2"  />
+        <activity android:name=".activity.AssetsDemoActivity"  />
+        <activity android:name=".activity.CommonWebActivity"  />
     </application>
 
 </manifest>

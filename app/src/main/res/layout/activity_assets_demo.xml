@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnParseObj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="从Assets里加载对象"
+            android:onClick="@{onClickListener}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/btnLoadHtm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="从Assets里加载Html"
+            android:onClick="@{onClickListener}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnParseObj"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
