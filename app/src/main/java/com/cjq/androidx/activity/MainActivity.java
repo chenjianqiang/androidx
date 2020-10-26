@@ -23,6 +23,7 @@ public class MainActivity extends ListActivity {
             new DemoDetails(R.string.common_app_databinding, R.string.common_app_databinding_desc, DataBindingDemoActivity.class),
             new DemoDetails(R.string.common_app_spanner_string_demo, R.string.common_app_spanner_string_demo_desc, SpannerStringDemoActivity.class),
             new DemoDetails(R.string.common_app_assets_demo, R.string.common_app_assets_demo_desc, AssetsDemoActivity.class),
+            new DemoDetails(R.string.common_app_stream_demo, R.string.common_app_stream_demo_desc, StreamDemoActivity.class),
             new DemoDetails(R.string.common_app_image_test_demo, R.string.common_app_image_test_demo_desc, ImageTestActivity2.class)
     };
 

@@ -56,8 +56,8 @@ public class AssetsDemoActivity extends BigBaseActivity{
         super.onClick(v);
         int vId = v.getId();
         switch (vId){
-            case R.id.btnParseObj:
-                Farm farm = AssetsFileUtils.parseAssetJson("nitrogen_farm.json",Farm.class);
+            case R.id.btnForEach:
+                Farm farm = AssetsFileUtils.parseAssetJson("test.json",Farm.class);
                 ToastUtils.showShort(farm.toString());
                 break;
             case R.id.btnLoadHtm:
@@ -65,4 +65,5 @@ public class AssetsDemoActivity extends BigBaseActivity{
                 break;
         }
     }
+
 }

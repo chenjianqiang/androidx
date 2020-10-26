@@ -38,6 +38,7 @@
         <activity android:name=".activity.ImageTestActivity2"  />
         <activity android:name=".activity.AssetsDemoActivity"  />
         <activity android:name=".activity.CommonWebActivity"  />
+        <activity android:name=".activity.StreamDemoActivity"  />
     </application>
 
 </manifest>
