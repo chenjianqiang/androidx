@@ -27,7 +27,7 @@
     <string name="common_app_spanner_string_demo_desc">支持单个TextView实现部分内容不同点击，不同显示样式，不同图标等</string>
 
     <string name="common_app_image_test_demo">图片显示demo</string>
-    <string name="common_app_image_test_demo_desc">根据实际图片大小设置显示控件大小</string>
+    <string name="common_app_image_test_demo_desc">两张图片合成一张图片</string>
 
     <string name="common_app_assets_demo">Assets数据读取</string>
     <string name="common_app_assets_demo_desc">Assets数据读取</string>
