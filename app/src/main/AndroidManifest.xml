@@ -39,6 +39,7 @@
         <activity android:name=".activity.AssetsDemoActivity"  />
         <activity android:name=".activity.CommonWebActivity"  />
         <activity android:name=".activity.StreamDemoActivity"  />
+        <activity android:name=".activity.BlankjCodeDemoActivity"  />
     </application>
 
 </manifest>
