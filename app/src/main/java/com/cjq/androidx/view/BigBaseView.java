@@ -39,7 +39,6 @@ public class BigBaseView extends FrameLayout implements View.OnClickListener {
     }
 
     private void processViewClick(View v){
-        ToastUtils.showShort("BigBaseActivity 检测到点击");
         Activity activity = ActivityUtils.getActivityByContext(v.getContext());
         if(activity instanceof AopDemoActivity){
             Log.e("BigBaseActivity","你是在 AopDemoActivity 点击的是某个按钮 ");

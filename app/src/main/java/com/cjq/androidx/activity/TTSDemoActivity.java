@@ -111,8 +111,8 @@ public class TTSDemoActivity extends BigBaseActivity implements TextToSpeech.OnI
     }
 
     public void stopTTS() {
-        if (mTts != null) {mTts.shutdown();
-
+        if (mTts != null) {
+            mTts.shutdown();
             mTts.stop();
             mTts = null;
         }

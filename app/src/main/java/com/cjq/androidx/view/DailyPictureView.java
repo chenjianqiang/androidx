@@ -3,6 +3,7 @@ package com.cjq.androidx.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +23,7 @@ import com.cjq.androidx.databinding.ViewDailyPictureBinding;
 import com.cjq.androidx.interfaces.OnItemClickListener;
 import com.cjq.androidx.viewmodel.DailyPictureViewModel;
 
-public class DailyPictureView extends BigBaseView implements OnItemClickListener<ImagesBean> {
+public class DailyPictureView extends FrameLayout implements OnItemClickListener<ImagesBean> {
     private ViewDailyPictureBinding mView;
     private DailyPictureViewModel dailyPictureViewModel;
     private DailyPictureViewAdapter dailyPictureViewAdapter;

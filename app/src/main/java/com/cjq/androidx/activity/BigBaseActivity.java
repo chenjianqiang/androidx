@@ -62,14 +62,14 @@ public abstract class BigBaseActivity extends AppCompatActivity implements View.
     @Override
     public void requestPermissionsSuccess() {
         //权限请求用户已经全部允许回调，如果需要执行特殊逻辑，在子类实现该方法
-        ToastUtils.showShort("权限请求用户已经全部允许");
+       // ToastUtils.showShort("权限请求用户已经全部允许");
     }
 
     @Override
     public void requestPermissionsFail() {
         //权限请求(至少有一个)不被用户允许回调。可以提示并退出或者提示权限的用途并重新发起权限申请。
         // 如果需要执行特殊逻辑，在子类实现该方法
-        ToastUtils.showShort("权限有缺失");
+       // ToastUtils.showShort("权限有缺失");
     }
 
     @Override
@@ -98,7 +98,7 @@ public abstract class BigBaseActivity extends AppCompatActivity implements View.
     }
 
     private void processViewClick(View v){
-        ToastUtils.showShort("BigBaseActivity 检测到点击");
+       // ToastUtils.showShort("BigBaseActivity 检测到点击");
         Activity activity = ActivityUtils.getActivityByContext(v.getContext());
         if(activity instanceof AopDemoActivity){
             Log.e("BigBaseActivity","你是在 AopDemoActivity 点击的是某个按钮 ");
