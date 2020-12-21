@@ -90,11 +90,4 @@ public class ImageTestActivity2 extends BigBaseActivity {
         }
     }
 
-    @Override
-    public String[] getPermissions() {
-        //设置该界面所需的全部权限
-        return new String[]{
-                Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE,
-        };
-    }
 }

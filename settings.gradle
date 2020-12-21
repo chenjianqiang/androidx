@@ -1,2 +1,2 @@
-include ':app'
+include ':app',':lanso'
 rootProject.name = "androidx-demo"

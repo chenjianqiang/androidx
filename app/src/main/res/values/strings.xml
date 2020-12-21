@@ -29,6 +29,10 @@
     <string name="common_app_image_test_demo">图片显示demo</string>
     <string name="common_app_image_test_demo_desc">两张图片合成一张图片</string>
 
+    <string name="common_app_image_add_watermark_demo">图片视频加水印demo</string>
+    <string name="common_app_image_add_watermark_demo_desc">图片视频加水印</string>
+    <string name="record_time_too_short">录制时间太短</string>
+
     <string name="blankj_test_demo">万能库blankj库demo</string>
     <string name="blankj_test_demo_desc">万能库blankj库demo</string>
 

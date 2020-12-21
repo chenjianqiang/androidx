@@ -9,6 +9,7 @@ import com.cjq.androidx.tools.AppExecutors;
 import com.facebook.stetho.Stetho;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.lansosdk.videoeditor.LanSoEditor;
 
 public class MyApplication extends Application {
     private static MyDataBase myDataBase;
@@ -22,6 +23,7 @@ public class MyApplication extends Application {
     }
 
     private void app_init() {
+        LanSoEditor.initSDK(this, null);
         //facebook的Android调试工具Stetho介绍，可以在chrome查看本地数据库 地址 chrome://inspect/#devices
         Stetho.initialize(Stetho.newInitializerBuilder(this).enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                 .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this)).build());
