@@ -33,6 +33,10 @@
     <string name="common_app_image_add_watermark_demo_desc">图片视频加水印</string>
     <string name="record_time_too_short">录制时间太短</string>
 
+
+    <string name="common_app_image_add_aidl_demo">调用系统隐藏Api demo</string>
+    <string name="common_app_image_add_aidl_demo_desc">通过aidl调用或者其他反射方法调用系统隐藏Api</string>
+
     <string name="blankj_test_demo">万能库blankj库demo</string>
     <string name="blankj_test_demo_desc">万能库blankj库demo</string>
 
