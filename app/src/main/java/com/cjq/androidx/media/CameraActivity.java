@@ -82,7 +82,6 @@ import java.io.File;
  *   }
  * }
  * </pre>
- * @author WingHawk
  */
 public class CameraActivity
         extends BigBaseActivity

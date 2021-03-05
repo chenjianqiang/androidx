@@ -53,5 +53,17 @@
             android:layout_height="wrap_content"
             android:onClick="@{Activity.userLogin}"
             android:text="登录" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自动刷新(并没有监听实现EditTextWatcher接口)"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name + ' ' + user.pwd}" />
+
     </LinearLayout>
 </layout>

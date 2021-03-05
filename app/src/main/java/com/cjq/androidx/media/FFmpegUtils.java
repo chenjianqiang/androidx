@@ -19,11 +19,6 @@ import java.util.Locale;
 import java.util.concurrent.SynchronousQueue;
 
 
-/**
- * FFmpeg 工具类
- *
- * @author WingHawk
- */
 public class FFmpegUtils {
 
     @WorkerThread

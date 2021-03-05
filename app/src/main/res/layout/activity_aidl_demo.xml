@@ -29,11 +29,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnForFilter"
+                android:id="@+id/testThreadList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{onClickListener}"
-                android:text="Stream之filter-过滤"
+                android:text="测试线程安全"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/callByITelephony" />
 
@@ -44,7 +44,7 @@
                 android:onClick="@{onClickListener}"
                 android:text="Stream之map -映射"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnForFilter" />
+                app:layout_constraintTop_toBottomOf="@+id/testThreadList" />
 
             <Button
                 android:id="@+id/btnForFlatMap"

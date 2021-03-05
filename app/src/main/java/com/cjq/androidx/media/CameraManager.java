@@ -51,7 +51,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * <p>
  * Created on 2018/8/20 12:40
  *
- * @author WingHawk
  */
 @SuppressWarnings({"UNUSED", "DEPRECATION"})
 public class CameraManager
