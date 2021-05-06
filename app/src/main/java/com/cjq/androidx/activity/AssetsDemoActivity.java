@@ -1,5 +1,7 @@
 package com.cjq.androidx.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -61,9 +63,16 @@ public class AssetsDemoActivity extends BigBaseActivity{
                 ToastUtils.showShort(farm.toString());
                 break;
             case R.id.btnLoadHtm:
-                toAnotherWeb();
+                //toAnotherWeb();
+                call("18978345574");
                 break;
         }
+    }
+
+    private void call(String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

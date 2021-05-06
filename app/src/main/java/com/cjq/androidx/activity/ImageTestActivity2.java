@@ -38,8 +38,6 @@ public class ImageTestActivity2 extends BigBaseActivity {
         Log.e("vvvvvvvvv", "ImageTestActivity2 getScreen:" + ScreenUtils.getScreenWidth() + "-" + ScreenUtils.getScreenHeight());
         mView.setOnClickListener(this);
 
-        Bitmap merge = mergeBitmap(getBitmapFromResource(R.mipmap.abum3), getBitmapFromResource(R.mipmap.abum4));
-        mView.wrapHeightImg.setImageBitmap(merge);
     }
 
     private Bitmap getBitmapFromResource(int reourceId) {
